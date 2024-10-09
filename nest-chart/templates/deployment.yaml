@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestjs-deployment
+  labels:
+    app: nestjs
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: nestjs
+  template:
+    metadata:
+      labels:
+        app: nestjs
+    spec:
+      containers:
+        - name: nestjs
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: nestjs-cm
+                  key: message

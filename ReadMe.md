@@ -32,3 +32,7 @@ Openshift: Verify the observability
     Helm templates
     CI using github actions:Pending 
     Deployment in local kubernetes using ArgoCD: Done.
+
+kubectl port-forward --address 0.0.0.0 pod/nestjs-deployment-565799fd8d-hh6ft 8000:3000
+helm lint nestjs-release ./nestjs-chart --values ./nestjs-chart/values.yaml
+helm upgrade nestjs-release ./nestjs-chart --values ./nestjs-chart/values.yaml
