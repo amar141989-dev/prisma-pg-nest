@@ -36,3 +36,4 @@ Openshift: Verify the observability
 kubectl port-forward --address 0.0.0.0 pod/nestjs-deployment-565799fd8d-hh6ft 8000:3000
 helm lint nestjs-release ./nestjs-chart --values ./nestjs-chart/values.yaml
 helm upgrade nestjs-release ./nestjs-chart --values ./nestjs-chart/values.yaml
+argocd admin initial-password -n argocd

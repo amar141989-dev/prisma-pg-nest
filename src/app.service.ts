@@ -10,6 +10,6 @@ constructor(private readonly configService: ConfigService) {}
     if(msg==null || msg==undefined) {
       msg = "Fallback message";
     }
-    return msg;
+    return msg + "!!";
   }
 }
