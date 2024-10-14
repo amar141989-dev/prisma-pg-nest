@@ -21,7 +21,8 @@ RUN npm run build
 
 # Expose the port on which the app will run
 EXPOSE 3000
-RUN chown node:node /usr/src/app
+RUN chown -R node:node /usr/src/app
+
 USER node
 
 # Start the server using the production build
